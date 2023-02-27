@@ -58,10 +58,10 @@ Try sending the preconfigured messages to a user
 
 # Useful resources for working with Matrix
 
-* A template for creating bots with
-[matrix-nio](https://github.com/poljar/matrix-nio).
+* A [template](https://github.com/poljar/matrix-nio) for creating bots with
+matrix-nio.
 * The documentation for [matrix-nio](https://matrix-nio.readthedocs.io/en/latest/nio.html).
-* Matrix Client-Server API [documentation](https://matrix.org/docs/api/#overview) (also allows configuring and sending events)
+* Matrix Client-Server API [documentation](https://matrix.org/docs/api/#overview) (also allows configuring and sending events).
 
 
 
