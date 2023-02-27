@@ -52,8 +52,8 @@ Configure the file with appropriate settings
 
 ## Running the project
 
-Try sending the preconfigured messages to a user
-`python nio-send 'config.yaml' 'filepath' 'username'`
+Try sending the preconfigured messages to a user (username does not require @:hostname - added based on values in `config.yaml`)
+`python nio-send config.yaml ./example/toads.jpg test`
 
 
 # Useful resources for working with Matrix

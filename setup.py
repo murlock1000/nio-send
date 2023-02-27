@@ -34,6 +34,7 @@ setup(
         "Markdown>=3.1.1",
         "PyYAML>=5.1.2",
         "python-magic",
+        "commonmark",
     ],
     extras_require={
         "postgres": ["psycopg2>=2.8.5"],
@@ -55,5 +56,5 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     # Allow the user to run the bot with `nio_send ...`
-    scripts=["nio_send"],
+    scripts=["nio-send"],
 )
