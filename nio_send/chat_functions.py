@@ -347,7 +347,7 @@ async def send_file_to_room(
     }
     try:
         await client.room_send(room_id, message_type="m.room.message", content=content)
-        logger.debug(f'This file was sent: "{file}" ' f'to room "{room_id}".')
+        logger.debug(f'This file was sent: {file} to room {room_id}')
     except Exception:
         logger.debug(
             f"File send of file {file} failed. " "Sorry. Here is the traceback."

@@ -38,7 +38,7 @@ async def main(args):
         receiver_id = args[3]  # @test:matrix.org
     else:
         print(
-            "Wrong number of arguments. Usage: nio_send 'config.yaml' 'filepath' 'username'"
+            "Wrong number of arguments. Usage: nio-send 'config.yaml' 'filepath' 'username'"
         )
         exit(1)
 
