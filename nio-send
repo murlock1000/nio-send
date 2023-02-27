@@ -3,9 +3,9 @@ import asyncio
 import sys
 
 try:
-    from my_project_name import main
+    from nio_send import main
 
     # Run the main function of the bot
     asyncio.get_event_loop().run_until_complete(main.main(sys.argv))
 except ImportError as e:
-    print("Unable to import my_project_name.main:", e)
+    print("Unable to import nio_send.main:", e)

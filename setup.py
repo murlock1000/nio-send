@@ -20,12 +20,14 @@ def read_file(path_segments):
         return f.read()
 
 
-version = exec_file(("my_project_name", "__init__.py"))["__version__"]
+version = exec_file(("nio_send", "__init__.py"))["__version__"]
+long_description = read_file(("README.md",))
 
 setup(
-    name="my-project-name",
+    name="nio_send",
     version=version,
-    description="A matrix bot to do amazing things!",
+    url="https://github.com/murlock1000/nio-send",
+    description="A matrix bot for queuing messages and creating rooms",
     packages=find_packages(exclude=["tests", "tests.*"]),
     install_requires=[
         "matrix-nio[e2e]>=0.10.0",
@@ -33,6 +35,15 @@ setup(
         "PyYAML>=5.1.2",
         "python-magic",
     ],
+    extras_require={
+        "postgres": ["psycopg2>=2.8.5"],
+        "dev": [
+            "isort==5.0.4",
+            "flake8==3.8.3",
+            "flake8-comprehensions==3.2.3",
+            "black==22.3.0",
+        ],
+    },
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python :: 3 :: Only",
@@ -41,7 +52,8 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
+    long_description=long_description,
     long_description_content_type="text/markdown",
-    # Allow the user to run the bot with `my-project-name ...`
-    scripts=["my-project-name"],
+    # Allow the user to run the bot with `nio_send ...`
+    scripts=["nio_send"],
 )

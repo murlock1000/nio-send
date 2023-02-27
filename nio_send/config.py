@@ -6,7 +6,7 @@ from typing import Any, List, Optional
 
 import yaml
 
-from my_project_name.errors import ConfigError
+from nio_send.errors import ConfigError
 
 logger = logging.getLogger()
 logging.getLogger("peewee").setLevel(
@@ -88,7 +88,6 @@ class Config:
             raise ConfigError("Invalid connection string for storage.database")
 
         # Matrix bot account setup
-        #self.user_id = self._get_cfg(["matrix", "user_id"], required=True)
         self.user_name = self._get_cfg(["matrix", "user_name"], required=True)
         self.user_suffix = self._get_cfg(["matrix", "user_suffix"], required=True)
         self.user_id = f"@{self.user_name}:{self.user_suffix}"
@@ -106,8 +105,6 @@ class Config:
             ["matrix", "device_name"], default="nio-template"
         )
         self.homeserver_url = self._get_cfg(["matrix", "homeserver_url"], required=True)
-
-        self.filter_old_messages = self._get_cfg(["filter_old_messages"], default=False)
 
     def _get_cfg(
         self,

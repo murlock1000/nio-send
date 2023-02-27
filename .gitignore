@@ -1,2 +1,26 @@
-IGNORE/
-bot.db
+# PyCharm
+.idea/
+
+# Python virtualenv environment folders
+env/
+env3/
+.env/
+
+# Bot local files
+*.db
+store/
+
+# Config file
+config.yaml
+
+# Python
+__pycache__/
+*.egg-info/
+build/
+dist/
+
+# Config file
+config.yaml
+
+# Log files
+*.log

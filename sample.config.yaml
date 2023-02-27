@@ -5,12 +5,12 @@
 # The string to prefix messages with to talk to the bot in group chats
 command_prefix: "!c"
 
-filter_old_messages: False
 
 # Options for connecting to the bot's Matrix account
 matrix:
-  # The Matrix User ID of the bot account
+  # The Matrix User name of the bot account
   user_name: "bot"
+  # The matrix server namespace
   user_suffix: "example.com"
   # Matrix account password (optional if access token used)
   user_password: ""
@@ -22,7 +22,7 @@ matrix:
   # If this device ID already exists, messages will be dropped silently in encrypted rooms
   device_id: ABCDEFGHIJ
   # What to name the logged in device
-  device_name: my-project-name
+  device_name: nio_send
 
 storage:
   # The database connection string

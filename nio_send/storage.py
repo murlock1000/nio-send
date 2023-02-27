@@ -104,20 +104,20 @@ class Storage:
 
         if current_migration_version < 1:
             logger.info("Migrating the database from v0 to v1...")
-        
+
             # Add new table, delete old ones, etc.
             # Add table for storing uploaded media file uris, so we don't have to reupload them to the server each time
             self._execute(
-            """
-            CREATE TABLE static_media_uris (
-                filename TEXT UNIQUE NOT NULL,
-                uri TEXT NOT NULL
+                """
+                CREATE TABLE static_media_uris (
+                    filename TEXT UNIQUE NOT NULL,
+                    uri TEXT NOT NULL
+                )
+                """
             )
-            """
-        )
             # Update the stored migration version
             self._execute("UPDATE migration_version SET version = 1")
-        
+
             logger.info("Database migrated to v1")
 
     def _execute(self, *args) -> None:
@@ -139,7 +139,7 @@ class Storage:
             """
             DELETE FROM static_media_uris WHERE filename = ?
         """,
-            ((filename,))
+            ((filename,)),
         )
 
     def get_uri(self, filename):
@@ -157,7 +157,7 @@ class Storage:
         if row is not None:
             return row[0]
         return None
-    
+
     def set_uri(self, filename, uri):
         """Create a new URI for a file with filename"""
         self._execute(
