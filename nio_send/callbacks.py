@@ -11,6 +11,7 @@ from nio_send.chat_functions import (
     send_file_to_room,
     send_text_to_room,
 )
+from nio_send.utils import with_ratelimit
 
 logger = logging.getLogger(__name__)
 
@@ -170,11 +171,11 @@ class Callbacks(object):
 
             # Determine task type
             if message_type == "text":
-                task = send_text_to_room(self.client, room_id, content)
+                task = with_ratelimit(send_text_to_room)(self.client, room_id, content)
             elif message_type == "image":
-                task = send_file_to_room(self.client, room_id, content, "m.image")
+                task = with_ratelimit(send_file_to_room)(self.client, room_id, content, "m.image")
             elif message_type == "file":
-                task = send_file_to_room(self.client, room_id, content, "m.file")
+                task = with_ratelimit(send_file_to_room)(self.client, room_id, content, "m.file")
             else:
                 logger.error(f"Unknown message type: {message_type}")
                 return
