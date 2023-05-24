@@ -346,7 +346,12 @@ async def send_file_to_room(
         "url": content_uri,
     }
     try:
-        await client.room_send(room_id, message_type="m.room.message", content=content)
+        await client.room_send(
+            room_id,
+            message_type="m.room.message",
+            content=content,
+            ignore_unverified_devices = True,
+        )
         logger.debug(f'This file was sent: {file} to room {room_id}')
     except Exception:
         logger.debug(
