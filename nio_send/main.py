@@ -15,6 +15,7 @@ from nio import (
 from nio_send.callbacks import Callbacks
 from nio_send.config import Config
 from nio_send.storage import Storage
+from nio_send.utils import sleep_ms
 
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
@@ -98,8 +99,15 @@ async def main(args):
                 )
                 # Check if login failed
                 if type(login_response) == LoginError:
-                    logger.error("Failed to login: %s", login_response.message)
-                    return -1
+                    if login_response.status_code == "M_LIMIT_EXCEEDED":
+						await sleep_ms(login_response.retry_after_ms)
+						login_response = await client.login(
+							password=config.user_password,
+							device_name=config.device_name,
+						)
+					if type(login_response) == LoginError:
+						logger.error("Failed to login: %s", login_response.message)
+						return -1
             except LocalProtocolError as e:
                 # There's an edge case here where the user hasn't installed the correct C
                 # dependencies. In that case, a LocalProtocolError is raised on login.
